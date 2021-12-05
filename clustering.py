@@ -6,58 +6,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import utilities
 
-#this is an older version of our kmeans. deprecated
-def k_means_vecchio(X, k):
-    '''
-        :param X: multidimensional numpy array
-        :param k: number of clusters
-    '''
-    clusters = np.zeros(X.shape[0])
-    conv = False
-    number_of_rows = X.shape[0]
-    random_indices = np.random.choice(number_of_rows,
-                                      size=k,
-                                      replace=False)
-    # display random rows
-    centers = X[random_indices, :]
-
-    while not conv:
-        test_d = defaultdict(list)
-        for i in range(len(X)):
-            new_dist = float('inf')
-            for k in range(len(centers)):
-                # print(centroids[k])
-                sum_ = 0
-                for h in range(len(centers[0])):
-                    sum_ += (X[i][h] - centers[k][h]) ** 2
-                # print("-------",sum_)
-                dist = np.sqrt(sum_)
-                # print("distance = ",dist)
-                # print("values==>",X[i],centroids[k],new_dist,dist)
-                if new_dist > dist:
-                    new_dist = dist
-                    # IN QUELLO NUOVO HO CAMBIATO QUESTA RIGA
-                    point_min_dist = X[i]
-                    clusters[i] = k
-                    dict_ind = k
-            # print("point_min_dist==>",point_min_dist,dict_ind)
-            # print()
-            test_d[dict_ind].append(point_min_dist)
-        new_centers = []
-        for i in range(len(test_d.keys())):
-            np_l = np.array(test_d[i])
-            centr = np_l.mean(axis=0)
-            new_centers.append(centr)
-        new_centers = np.array(new_centers)
-        # print(new_centers)
-        # print()
-        # print(centers)
-        if (centers == new_centers).all():
-            conv = True
-        else:
-            centers = new_centers
-    return centers, test_d
-
 
 def k_means(X, k):
     '''
@@ -195,3 +143,57 @@ def silhoutte_method(x_test,n_clusters):
     plt.ylabel('silhouette')
     plt.show()
     return avrg_sil
+
+
+#this is an older version of our kmeans. deprecated
+def k_means_vecchio(X, k):
+    '''
+        :param X: multidimensional numpy array
+        :param k: number of clusters
+    '''
+    clusters = np.zeros(X.shape[0])
+    conv = False
+    number_of_rows = X.shape[0]
+    random_indices = np.random.choice(number_of_rows,
+                                      size=k,
+                                      replace=False)
+    # display random rows
+    centers = X[random_indices, :]
+
+    while not conv:
+        test_d = defaultdict(list)
+        for i in range(len(X)):
+            new_dist = float('inf')
+            for k in range(len(centers)):
+                # print(centroids[k])
+                sum_ = 0
+                for h in range(len(centers[0])):
+                    sum_ += (X[i][h] - centers[k][h]) ** 2
+                # print("-------",sum_)
+                dist = np.sqrt(sum_)
+                # print("distance = ",dist)
+                # print("values==>",X[i],centroids[k],new_dist,dist)
+                if new_dist > dist:
+                    new_dist = dist
+                    # IN QUELLO NUOVO HO CAMBIATO QUESTA RIGA
+                    point_min_dist = X[i]
+                    clusters[i] = k
+                    dict_ind = k
+            # print("point_min_dist==>",point_min_dist,dict_ind)
+            # print()
+            test_d[dict_ind].append(point_min_dist)
+        new_centers = []
+        for i in range(len(test_d.keys())):
+            np_l = np.array(test_d[i])
+            centr = np_l.mean(axis=0)
+            new_centers.append(centr)
+        new_centers = np.array(new_centers)
+        # print(new_centers)
+        # print()
+        # print(centers)
+        if (centers == new_centers).all():
+            conv = True
+        else:
+            centers = new_centers
+    return centers, test_d
+
