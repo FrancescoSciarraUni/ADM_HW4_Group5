@@ -1,8 +1,7 @@
 # ADM_HW4_Group5
 
- - : the notebook that contains the homework
- 
-    
+ - __main.ipynb__: the notebook that contains the homework
+ - __silhouette.ipynb__: this notebook contains the result of our silhoutte analysis. We used another notebook because the running time of the analysis was very long, in this way we could run the main notebook while the analysis was finishing
 - __clustering.py__ : This python library which contains the functions that are needed to achieve clustering. It contains our kmeans implementation and the two methods (silhoutte and elbow) that we used to find the best number of clusters
 
 - __custom_minhash.py__ : This python library contains functions to compute the hash signature matrix starting from the dataset 
