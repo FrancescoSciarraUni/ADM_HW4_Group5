@@ -6,7 +6,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import utilities
 
-
+#this is an older version of our kmeans. deprecated
 def k_means_vecchio(X, k):
     '''
         :param X: multidimensional numpy array
