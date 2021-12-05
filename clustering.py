@@ -96,6 +96,7 @@ def elbow(x_test,max_k):
     plt.show()
     return cost_list
 
+#deprecated version of silhouette method the new implementation is in the silhouette.ipynb notebook
 def silhoutte_method(x_test,n_clusters):
     '''
 
