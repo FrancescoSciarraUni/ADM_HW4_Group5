@@ -14,5 +14,5 @@
 
 - __dataset__ : https://www.kaggle.com/dhrumil140396/mp3s32k. This dataset that contains .mp3 files divided by artist and album
 
-- __json__ : directory that contains the .json files that represent the hash signature matrix for the dataset songs (sig_matrix.json) and for the query songs (queries_sig.json). It also contains a json that map song id to the tuple (artist, song name) 
+- __/json__ : directory that contains the .json files that represent the hash signature matrix for the dataset songs (sig_matrix.json) and for the query songs (queries_sig.json). It also contains a json that map song id to the tuple (artist, song name) 
 
